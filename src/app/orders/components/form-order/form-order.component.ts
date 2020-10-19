@@ -27,7 +27,7 @@ export class FormOrderComponent implements OnInit {
       tva:[o.tva],
       state:[o.state],
       typePresta:[o.typePresta],
-      client:[o.client,Validators.required],
+      client:[o.client, Validators.compose([Validators.required, Validators.minLength(3)])],
       comment:[o.comment],
       id:[o.id]
     },{validators:Validators.compose([DependencyValidator("client",["tjmHt","nbJours"])])});

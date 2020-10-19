@@ -9,7 +9,15 @@
     <div class="form-group">
       <label for="client">client</label>
       <input id="client" formControlName="client" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="form.get('client').invalid && form.get('client').touched">{{form.get('client').errors | json}}</div>
+      <!-- <div class="alert alert-danger" *ngIf="form.get('client').invalid && form.get('client').touched">{{form.get('client').errors | json}}</div> -->
+      <div invalidRow="client">
+        <p *invalidType="'required'">
+          Champs obligatoire
+        </p>
+        <p *invalidType="'minlength'">
+          Taille minimal X char.
+        </p>
+      </div>
     </div>
     <div class="form-group">
       <label for="nbJours">nbJours</label>

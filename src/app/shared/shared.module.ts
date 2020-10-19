@@ -6,6 +6,8 @@ import { TableDarkComponent } from './components/table-dark/table-dark.component
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { StateDirective } from './directives/state.directive';
 import { ModalComponent } from './components/modal/modal.component';
+import { InvalidTypeDirective } from './directives/invalid-type.directive';
+import { InvalidMessageDirective } from './directives/invalid-message.directive';
 
 
 
@@ -14,7 +16,9 @@ import { ModalComponent } from './components/modal/modal.component';
      StateDirective,
      BtnComponent,
      TableDarkComponent,
-     ModalComponent],
+     ModalComponent,
+     InvalidTypeDirective,
+     InvalidMessageDirective],
   imports: [
     CommonModule,RouterModule
   ],
@@ -22,7 +26,9 @@ import { ModalComponent } from './components/modal/modal.component';
     TableDarkComponent,
     StateDirective,
     BtnComponent,
-    ModalComponent
+    ModalComponent,
+    InvalidMessageDirective,
+    InvalidTypeDirective,
   ]
 })
 export class SharedModule { }
