@@ -15,6 +15,7 @@ import { OrdersService } from '../../services/orders.service';
 export class PageRecapOrderComponent implements OnInit {
 
   public collectionOrders$: Observable<Order[]>;
+  public colCollectionOrders$: Observable<[Order[], Order[]]>
   public tableHeaders:string[];
   public states=Object.values(StateOrder);
   private destroy$:Subject<Boolean>=new Subject();
@@ -45,11 +46,13 @@ export class PageRecapOrderComponent implements OnInit {
       switchMap((param: ParamMap) => {
         return this.clientService.getItemById(param.get("id")).pipe(
           switchMap((client) => {
-            return this.orderService.getItemByClientName(client.name)
+            return this.orderService.getAllItemByClientName(client.name)
           })
         )
       })
     )
+
+
 
     // Utilisation du mergeMap dans le cas où l'on ne veut unsubscribe
     // sur les observables "intermédiaires" (par exemple avec une websocket)

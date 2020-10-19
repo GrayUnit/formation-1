@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, forkJoin, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
@@ -67,6 +67,22 @@ export class OrdersService {
     )
   }
 
+  public getItem2ByClientName(name: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.urlApi}orders2?client=${name}`).pipe(
+      map((col) => {
+        return this.serializeOrders(col);
+      })
+    )
+  }
+
+  public getAllItemByClientName(name: string): Observable<Order[]> {
+    return combineLatest([this.getItemByClientName(name), this.getItem2ByClientName(name)]).pipe(
+      map((cols) => {
+        return cols[0].concat(cols[1]);
+      })
+    )
+  }
+
   public serializeOrders(collectionOrders: Order[]): Order[] {
     return collectionOrders.map(
       (item) => {
@@ -74,6 +90,4 @@ export class OrdersService {
       }
     )
   }
-
-
 }
