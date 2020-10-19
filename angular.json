@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "formation": {
+      "i18n": {
+        "sourceLocale": "fr",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/formation",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -65,6 +72,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": ["en"]
             }
           }
         },
@@ -76,6 +86,9 @@
           "configurations": {
             "production": {
               "browserTarget": "formation:build:production"
+            },
+            "en": {
+              "browserTarget": "formation:build:en"
             }
           }
         },
