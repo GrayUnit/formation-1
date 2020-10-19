@@ -1,7 +1,8 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Order } from 'src/app/core/models/order';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { OrdersService } from '../../services/orders.service';
 
 @Component({
@@ -12,6 +13,8 @@ import { OrdersService } from '../../services/orders.service';
 export class PageAddOrderComponent implements OnInit {
 
   @ViewChild('confirmAddModal') private confirmAddModal: TemplateRef<any>;
+
+
   private currentActiveModal: NgbModalRef;
   public modalValues: Order;
 
@@ -34,6 +37,9 @@ export class PageAddOrderComponent implements OnInit {
   public openAddModal(values: any) {
     this.modalValues = values;
     this.currentActiveModal = this.modalService.open(this.confirmAddModal);
+    console.log(this.modalService.activeInstances.subscribe(
+      () => {console.log(this.modalService.activeInstances)}
+    ));
   }
 
   public dismissModal() {

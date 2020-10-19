@@ -7,7 +7,7 @@
       Etes vous sur de vouloir ajouter cet élément ?
     </div>
     <div class="modal-footer">
-      <app-btn typeButton="button" (clicked)="addOrder(modalValues)" label="Valider" [action]="true"></app-btn>
+      <app-btn typeButton="button" (clicked)="modal.dismiss()" label="Valider" [action]="true"></app-btn>
     </div>
   </app-modal>
 </ng-template>

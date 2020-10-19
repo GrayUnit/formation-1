@@ -15,6 +15,7 @@
     <td>
       <app-icon-update routerLink="edit/{{client.id}}" ></app-icon-update>
       <app-icon-delete (click)="deleteClient(client)"></app-icon-delete>
+      <app-btn route="/orders/recap/{{client.id}}" label="Commandes"></app-btn>
     </td>
   </tr>
 </app-table-light>
