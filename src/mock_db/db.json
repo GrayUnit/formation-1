@@ -1,10 +1,10 @@
 {
   "orders": [
     {
-      "tjmHt": "2000",
       "nbJours": 1,
+      "state": "Confirm",
+      "tjmHt": "2000",
       "tva": "5.5",
-      "state": "CANCEL",
       "typePresta": "Formation",
       "client": "nemesys",
       "comment": "fssdgh",
@@ -49,6 +49,16 @@
       "client": "azeerr",
       "comment": null,
       "id": 10
+    },
+    {
+      "tjmHt": "500",
+      "nbJours": 1,
+      "tva": null,
+      "state": "In Progress",
+      "typePresta": "dfdf",
+      "client": "dsffd",
+      "comment": null,
+      "id": 11
     }
   ],
   "clients": [

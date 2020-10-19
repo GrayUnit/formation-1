@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/core/models/order';
@@ -16,7 +16,10 @@ export class PageListOrderComponent implements OnInit {
   public tableHeaders:string[];
   public states=Object.values(StateOrder);
   private destroy$:Subject<Boolean>=new Subject();
-  constructor(private orderService:OrdersService) { }
+  constructor(
+    private orderService:OrdersService,
+    private renderer: Renderer2
+  ) { }
 
 
   public changeState(item:Order,event):void {
@@ -60,4 +63,11 @@ export class PageListOrderComponent implements OnInit {
     );
   }
 
+  @ViewChild('abcd', {static: true}) private abcd: ElementRef;
+  public onClick() {
+    const li = this.renderer.createElement('li');
+    const text = this.renderer.createText('Cliquer pour ajouter');
+    this.renderer.appendChild(li, text);
+    this.renderer.appendChild(this.abcd.nativeElement, li);
+  }
 }
